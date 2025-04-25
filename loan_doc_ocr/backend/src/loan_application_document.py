@@ -11,8 +11,7 @@ class PrescriptionParser(MedicalDocParser):
             "name": self.get_field("name"),
             "address": self.get_field("address"),
             "income_details": self.get_field("income_details"),
-            "loan_amount": self.get_field("loan_amount"),
-            "refill": self.get_field("refill")
+            "loan_amount": self.get_field("loan_amount")
         }        
     
     def get_field(self, field_name):
@@ -21,7 +20,6 @@ class PrescriptionParser(MedicalDocParser):
             "address": {"pattern": "Address:(.*)\n", "flags": 0},
             "income_details": {"pattern": "Address:[^\n]*(.*)Directions", "flags": re.DOTALL},
             "loan_amount": {"pattern": "Directions:.(.*)Refill", "flags": re.DOTALL},
-            "refill": {"pattern": "Refill:.*(\d).*times", "flags": 0},
         }
 
         pattern_object = pattern_dict.get(field_name)
