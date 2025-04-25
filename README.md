@@ -3,7 +3,7 @@ OCR project to extract information from personal loan application PDF Documents.
 
 ## Demo
 https://drive.google.com/file/d/1gWOfnlMCs5RcR5gwQa8gphTmgZVq_f1m/view?usp=sharing
-## [Click here to see project presentation](https://drive.google.com/file/d/1gWOfnlMCs5RcR5gwQa8gphTmgZVq_f1m/view?usp=sharing)
+## [Click here to see project presentation](https://docs.google.com/presentation/d/1gJxmQr6SZmKBaXIt8Gwi8kpK5WyY_jlFo6cWAa7Xp0g/edit?slide=id.p#slide=id.p)
 
 ## Overview
 Problem Statement: Automated Personal Loan Document Processing
