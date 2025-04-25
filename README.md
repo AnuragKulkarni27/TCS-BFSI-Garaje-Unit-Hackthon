@@ -2,9 +2,7 @@
 OCR project to extract information from personal loan application PDF Documents.
 
 ## Demo
-
-https://github.com/abhijeetk597/medical-data-extraction/assets/138308825/3d5d90e8-2858-4831-b1d5-97a3874f256c
-
+https://drive.google.com/file/d/1gWOfnlMCs5RcR5gwQa8gphTmgZVq_f1m/view?usp=sharing
 ## [Click here to see project presentation](https://drive.google.com/file/d/1gWOfnlMCs5RcR5gwQa8gphTmgZVq_f1m/view?usp=sharing)
 
 ## Overview
