@@ -1,8 +1,8 @@
 import re
-from parser_generic import MedicalDocParser
-class PrescriptionParser(MedicalDocParser):
+from parser_generic import DocParser
+class PrescriptionParser(DocParser):
     def __init__(self, text):
-        MedicalDocParser.__init__(self, text)
+        DocParser.__init__(self, text)
     def parse(self):
         return{
             "name": self.get_field("name"),
