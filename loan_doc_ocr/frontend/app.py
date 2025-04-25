@@ -6,6 +6,7 @@ import time
 
 POPPLER_PATH = r"C:\poppler-24.08.0\Library\bin"
 URL = "http://127.0.0.1:8000/extract_from_doc"
+st.set_page_config(page_title="Loan Doc OCR", layout="wide")
 st.title("Automated Personal Loan Document Processing 📄")
 file = st.file_uploader("Upload file", type=["png", "jpg", "jpeg", "pdf"])
 col3, col4 = st.columns(2)
