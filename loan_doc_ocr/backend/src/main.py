@@ -10,13 +10,9 @@ from pydantic import BaseModel
 import traceback
 
 app = FastAPI()
-
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-origins = ["*"]  # Allow all origins for testing
-
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -25,7 +21,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configuration - Update these paths
 POPPLER_PATH = os.getenv("POPPLER_PATH", r"C:\poppler-24.08.0\Library\bin")
 TESSERACT_PATH = os.getenv("TESSERACT_PATH", r"C:\Program Files\Tesseract-OCR\tesseract.exe")
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
@@ -54,35 +49,30 @@ def extract_from_text(text: str) -> dict:
     }
     
     try:
-        # Clean the text
         text = clean_text(text)
-        
-        # Extract Name - more precise pattern
+
         name_match = re.search(r'(?i)(?:name:\s*)([^\n]+)', text)
         if name_match:
             extracted["name"] = name_match.group(1).strip()
         
-        # Extract Address - handle multi-line
         address_match = re.search(r'(?i)(?:address:\s*)([^\n]+)', text)
         if address_match:
             extracted["address"] = address_match.group(1).strip()
         
-        # Extract Income - handle different formats
         income_match = re.search(r'(?i)(?:income details?|annual income)[:\s]*([\d,]+)', text)
         if income_match:
             extracted["income"] = income_match.group(1).strip() + "/-"
         else:
-            # Fallback to any amount that looks like income
             amounts = re.findall(r'(\d{1,3}(?:,\d{3})+)', text)
-            if len(amounts) > 1:  # Assuming income is the second largest amount
+            if len(amounts) > 1:
                 extracted["income"] = amounts[-2] + "/-"
         
-        # Extract Loan Amount - specific pattern
+
         loan_match = re.search(r'(?i)(?:loan amounts?)[:\s]*([\d,]+)', text)
         if loan_match:
             extracted["loan_amount"] = loan_match.group(1).strip() + "/-"
         else:
-            # Fallback to largest amount
+
             amounts = re.findall(r'(\d{1,3}(?:,\d{3})+)', text)
             if amounts:
                 extracted["loan_amount"] = amounts[-1] + "/-"
