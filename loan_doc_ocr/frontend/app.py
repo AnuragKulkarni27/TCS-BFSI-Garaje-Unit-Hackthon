@@ -4,15 +4,12 @@ from pdf2image import convert_from_bytes
 import os
 import time
 
-# Configuration
 POPPLER_PATH = os.getenv("POPPLER_PATH", r"C:\poppler-24.08.0\Library\bin")
 BACKEND_URL = "http://localhost:8000/extract_from_doc"
 
 # Page setup
 st.set_page_config(page_title="Loan Doc Processor", layout="wide")
 st.title("Loan Application Processor")
-
-# Session state
 if 'extracted_data' not in st.session_state:
     st.session_state.extracted_data = None
 if 'error' not in st.session_state:
@@ -28,7 +25,7 @@ if uploaded_file:
         st.subheader("Document Preview")
         try:
             pages = convert_from_bytes(uploaded_file.getvalue(), poppler_path=POPPLER_PATH)
-            st.image(pages[0], use_container_width=True)  # Changed from use_column_width to use_container_width
+            st.image(pages[0], use_container_width=True)
         except Exception as e:
             st.error(f"Preview error: {str(e)}")
     
