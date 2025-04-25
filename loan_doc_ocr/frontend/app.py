@@ -41,7 +41,6 @@ if file:
             address = st.text_input(label="Address", value=st.session_state["address"])
             income_details = st.text_input(label="Income Details", value=st.session_state["income_details"])
             loan_amount = st.text_input(label="Loan Amount", value=st.session_state["loan_amount"])
-            refill = st.text_input(label="refill", value=st.session_state["refill"])
             if st.button(label="Submit", type="primary"):
                 for key in list(st.session_state.keys()):
                     del st.session_state[key]
